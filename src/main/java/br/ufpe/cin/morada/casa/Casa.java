@@ -33,6 +33,13 @@ public class Casa {
 		membros.add(pessoa);
 	}
 
+	public void removerMembro(Pessoa pessoa) {
+		if (!membros.contains(pessoa)) {
+			throw new RuntimeException(pessoa.getNome() + " não está cadastrada nesta casa.");
+		}
+		membros.remove(pessoa);
+	}
+
 	public String getCodigo() {
 		return codigo;
 	}
