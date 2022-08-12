@@ -23,4 +23,8 @@ public class ControladorCasa {
 		casa.removerMembro(pessoa);
 		repositorioCasa.salvar(casa);
 	}
+
+  public Casa buscar(String codigoCasa) {
+    return null;
+  }
 }

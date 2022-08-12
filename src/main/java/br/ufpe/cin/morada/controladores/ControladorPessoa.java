@@ -1,6 +1,7 @@
 package br.ufpe.cin.morada.controladores;
 
 import br.ufpe.cin.morada.pessoa.IRepositorioPessoa;
+import br.ufpe.cin.morada.pessoa.Pessoa;
 import br.ufpe.cin.morada.subsistemaGoogle.ISubsistemaGoogle;
 
 public class ControladorPessoa {
@@ -16,5 +17,9 @@ public class ControladorPessoa {
 	public void logar(string token) {
 
 	}
+
+  public Pessoa buscar(String email) {
+    return null;
+  }
 
 }

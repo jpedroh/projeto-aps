@@ -1,10 +1,12 @@
 package br.ufpe.cin.morada.tarefa;
 
+import java.util.List;
+
 import br.ufpe.cin.morada.casa.Casa;
 
 public interface IRepositorioTarefa {
 
-	public Tarefa[] buscarTodos(Casa casa);
+	public List<Tarefa> buscarTodos(Casa casa);
 
 	public Tarefa buscar(long id);
 
