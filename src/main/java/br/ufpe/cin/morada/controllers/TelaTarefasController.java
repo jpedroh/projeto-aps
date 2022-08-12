@@ -6,10 +6,10 @@ public class TelaTarefasController {
 
 	private Fachada fachada;
 
-	public void criarTarefa(string nome) {
+	public void criarTarefa(String nome) {
 	}
 
-	public void concluirTarefa(string codigo) {
+	public void concluirTarefa(String codigo) {
 
 	}
 

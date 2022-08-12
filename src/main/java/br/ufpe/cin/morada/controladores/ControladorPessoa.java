@@ -10,11 +10,11 @@ public class ControladorPessoa {
 
 	private ISubsistemaGoogle iSubsistemaGoogle;
 
-	public void cadastrar(string token) {
+	public void cadastrar(String token) {
 
 	}
 
-	public void logar(string token) {
+	public void logar(String token) {
 
 	}
 

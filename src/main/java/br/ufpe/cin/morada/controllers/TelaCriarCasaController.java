@@ -7,7 +7,7 @@ public class TelaCriarCasaController {
 
 	private Fachada fachada;
 
-	public Casa criarCasa(string nome) {
+	public Casa criarCasa(String nome) {
 		return null;
 	}
 

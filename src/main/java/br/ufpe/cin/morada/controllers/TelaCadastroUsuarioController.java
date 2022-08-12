@@ -6,7 +6,7 @@ public class TelaCadastroUsuarioController {
 
 	private Fachada fachada;
 
-	public void cadastrarUsuario(string tokenGoogle) {
+	public void cadastrarUsuario(String tokenGoogle) {
 
 	}
 

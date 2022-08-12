@@ -10,11 +10,11 @@ public class RepositorioPessoaImpl implements IRepositorioPessoa {
 		return null;
 	}
 
-	public boolean existe(string email) {
+	public boolean existe(String email) {
 		return false;
 	}
 
-	public Pessoa getByEmail(string email) {
+	public Pessoa getByEmail(String email) {
 		return null;
 	}
 
