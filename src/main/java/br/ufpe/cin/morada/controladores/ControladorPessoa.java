@@ -1,7 +1,7 @@
 package br.ufpe.cin.morada.controladores;
 
-import morada.pessoa.IRepositorioPessoa;
-import morada.subsistemaGoogle.ISubsistemaGoogle;
+import br.ufpe.cin.morada.pessoa.IRepositorioPessoa;
+import br.ufpe.cin.morada.subsistemaGoogle.ISubsistemaGoogle;
 
 public class ControladorPessoa {
 

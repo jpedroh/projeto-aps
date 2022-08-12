@@ -1,6 +1,6 @@
 package br.ufpe.cin.morada.pessoa;
 
-import morada.util.Email;
+import br.ufpe.cin.morada.util.Email;
 
 public class Pessoa {
 

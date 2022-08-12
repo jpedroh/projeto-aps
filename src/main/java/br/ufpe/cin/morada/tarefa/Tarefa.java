@@ -1,8 +1,8 @@
 package br.ufpe.cin.morada.tarefa;
 
-import morada.pessoa.Pessoa;
-import morada.casa.Casa;
-import morada.util.DateTime;
+import br.ufpe.cin.morada.pessoa.Pessoa;
+import br.ufpe.cin.morada.casa.Casa;
+import br.ufpe.cin.morada.util.DateTime;
 
 public class Tarefa {
 

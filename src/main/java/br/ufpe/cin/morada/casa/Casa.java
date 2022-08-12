@@ -1,6 +1,6 @@
 package br.ufpe.cin.morada.casa;
 
-import morada.pessoa.Pessoa;
+import br.ufpe.cin.morada.pessoa.Pessoa;
 
 public class Casa {
 

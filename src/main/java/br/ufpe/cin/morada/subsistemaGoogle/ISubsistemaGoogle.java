@@ -1,6 +1,6 @@
 package br.ufpe.cin.morada.subsistemaGoogle;
 
-import morada.pessoa.Pessoa;
+import br.ufpe.cin.morada.pessoa.Pessoa;
 
 public interface ISubsistemaGoogle {
 

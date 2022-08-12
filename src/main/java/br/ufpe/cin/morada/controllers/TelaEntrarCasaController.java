@@ -1,13 +1,17 @@
 package br.ufpe.cin.morada.controllers;
 
-import morada.controladores.Fachada;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
+import br.ufpe.cin.morada.controladores.Fachada;
+
+@Controller()
 public class TelaEntrarCasaController {
 
 	private Fachada fachada;
 
-	public void entrarCasa(string codigo) {
-
+	@GetMapping("/")
+	public String entrarCasa(String codigo) {
+		return "index";
 	}
-
 }

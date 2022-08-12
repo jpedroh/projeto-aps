@@ -1,6 +1,6 @@
 package br.ufpe.cin.morada.tarefa;
 
-import morada.casa.Casa;
+import br.ufpe.cin.morada.casa.Casa;
 
 public class RepositorioTarefaImpl implements IRepositorioTarefa {
 

@@ -1,7 +1,7 @@
 package br.ufpe.cin.morada.controllers;
 
-import morada.controladores.Fachada;
-import morada.casa.Casa;
+import br.ufpe.cin.morada.controladores.Fachada;
+import br.ufpe.cin.morada.casa.Casa;
 
 public class TelaCriarCasaController {
 

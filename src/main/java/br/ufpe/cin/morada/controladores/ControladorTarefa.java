@@ -1,7 +1,7 @@
 package br.ufpe.cin.morada.controladores;
 
-import morada.tarefa.IRepositorioTarefa;
-import morada.tarefa.Tarefa;
+import br.ufpe.cin.morada.tarefa.IRepositorioTarefa;
+import br.ufpe.cin.morada.tarefa.Tarefa;
 
 public class ControladorTarefa {
 

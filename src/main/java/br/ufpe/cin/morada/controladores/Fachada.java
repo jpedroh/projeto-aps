@@ -1,7 +1,7 @@
 package br.ufpe.cin.morada.controladores;
 
-import morada.tarefa.Tarefa;
-import morada.casa.Casa;
+import br.ufpe.cin.morada.tarefa.Tarefa;
+import br.ufpe.cin.morada.casa.Casa;
 
 public class Fachada {
 

@@ -1,7 +1,7 @@
 package br.ufpe.cin.morada.controladores;
 
-import morada.casa.IRepositorioCasa;
-import morada.casa.Casa;
+import br.ufpe.cin.morada.casa.IRepositorioCasa;
+import br.ufpe.cin.morada.casa.Casa;
 
 public class ControladorCasa {
 
