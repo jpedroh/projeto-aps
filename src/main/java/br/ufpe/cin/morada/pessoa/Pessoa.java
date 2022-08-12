@@ -4,12 +4,12 @@ import br.ufpe.cin.morada.util.Email;
 
 public class Pessoa {
 
-	private string nome;
+	private String nome;
 
 	private Email email;
 
-	public string getNome() {
-		return null;
+	public String getNome() {
+		return this.nome;
 	}
 
 }
