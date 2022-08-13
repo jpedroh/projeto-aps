@@ -1,6 +1,7 @@
 package br.ufpe.cin.morada.controladores;
 
 import br.ufpe.cin.morada.tarefa.Tarefa;
+import br.ufpe.cin.morada.util.Email;
 
 import java.util.List;
 
@@ -16,8 +17,8 @@ public class Fachada {
 
 	}
 
-	public void logar(String token) {
-
+	public Pessoa logar(String token) {
+		return controladorPessoa.logar(token);
 	}
 
 	public void inserirTarefa(Tarefa tarefa) {
@@ -37,17 +38,18 @@ public class Fachada {
 		return controladorTarefa.buscarTarefas(casa);
 	}
 
-	public void criarCasa(Casa casa, String email) {
+	public Casa criarCasa(Casa casa, Email email) {
 		Pessoa membro = controladorPessoa.buscar(email);
 		controladorCasa.criarCasa(casa, membro);
+		return casa;
 	}
 
-	public void entrarCasa(String codigo, String email) {
+	public void entrarCasa(String codigo, Email email) {
 		Pessoa membro = controladorPessoa.buscar(email);
 		controladorCasa.entrarCasa(codigo, membro);
 	}
 
-	public void sairCasa(String codigo, String email) {
+	public void sairCasa(String codigo, Email email) {
 		Pessoa membro = controladorPessoa.buscar(email);
 		controladorCasa.sairCasa(codigo, membro);
 	}

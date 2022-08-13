@@ -14,7 +14,7 @@ public class Casa {
 
 	private List<Pessoa> membros;
 
-	Casa(String nome) {
+	public Casa(String nome) {
 		this.codigo = gerarCodigo();
 		this.nome = nome;
 		this.membros = new ArrayList<>();
