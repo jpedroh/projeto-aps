@@ -19,6 +19,6 @@ public class FachadaSubsistemaGoogle implements ISubsistemaGoogle {
 
 	public Pessoa getDadosFromToken(String token) {
 		GooglePessoa googleUser = httpClient.getForObject(GOOGLE_ENDPOINT + token, GooglePessoa.class);
-		return new Pessoa(googleUser.getGivenName() + googleUser.getFamilyName(), Email.from(googleUser.getEmail()));
+		return new Pessoa(googleUser.getName(), Email.from(googleUser.getEmail()));
 	}
 }

@@ -1,9 +1,8 @@
 package br.ufpe.cin.morada.casa;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.UUID;
 
 import br.ufpe.cin.morada.pessoa.Pessoa;
 
@@ -21,9 +20,7 @@ public class Casa {
 	}
 
 	private String gerarCodigo() {
-		byte[] array = new byte[7];
-		new Random().nextBytes(array);
-		return new String(array, Charset.forName("UTF-8"));
+		return UUID.randomUUID().toString().substring(0, 7);
 	}
 
 	public void adicionarMembro(Pessoa pessoa) {

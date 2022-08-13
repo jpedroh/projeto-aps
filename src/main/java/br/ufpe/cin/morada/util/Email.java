@@ -39,4 +39,9 @@ public final class Email {
       return false;
     return true;
   }
+
+  @Override
+  public String toString() {
+    return valor;
+  }
 }

@@ -24,6 +24,10 @@ public class Fachada {
 		return controladorPessoa.logar(token);
 	}
 
+	public Pessoa buscarPessoa(Email email) {
+		return controladorPessoa.buscar(email);
+	}
+
 	public void inserirTarefa(Tarefa tarefa) {
 
 	}
