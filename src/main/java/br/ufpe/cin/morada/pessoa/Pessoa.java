@@ -7,6 +7,11 @@ public class Pessoa {
 
 	private Email email;
 
+	public Pessoa(String nome, Email email) {
+		this.nome = nome;
+		this.email = email;
+	}
+
 	public Email getEmail() {
 		return email;
 	}
