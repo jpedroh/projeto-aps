@@ -25,6 +25,6 @@ public class ControladorCasa {
 	}
 
   public Casa buscar(String codigoCasa) {
-    return null;
+		return repositorioCasa.buscar(codigoCasa);
   }
 }
