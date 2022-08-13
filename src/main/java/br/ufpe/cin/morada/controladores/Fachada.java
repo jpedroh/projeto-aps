@@ -5,17 +5,20 @@ import br.ufpe.cin.morada.util.Email;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import br.ufpe.cin.morada.casa.Casa;
 import br.ufpe.cin.morada.pessoa.Pessoa;
 
+@Component
 public class Fachada {
+	@Autowired
 	private ControladorPessoa controladorPessoa;
+	@Autowired
 	private ControladorTarefa controladorTarefa;
+	@Autowired
 	private ControladorCasa controladorCasa;
-
-	public void cadastrar(String token) {
-
-	}
 
 	public Pessoa logar(String token) {
 		return controladorPessoa.logar(token);

@@ -17,4 +17,26 @@ public final class Email {
   public String getValor() {
     return this.valor;
   }
+
+  @Override
+  public int hashCode() {
+    return valor.hashCode();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Email other = (Email) obj;
+    if (valor == null) {
+      if (other.valor != null)
+        return false;
+    } else if (!valor.equals(other.valor))
+      return false;
+    return true;
+  }
 }

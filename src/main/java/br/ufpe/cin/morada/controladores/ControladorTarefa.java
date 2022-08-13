@@ -2,12 +2,16 @@ package br.ufpe.cin.morada.controladores;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import br.ufpe.cin.morada.casa.Casa;
 import br.ufpe.cin.morada.tarefa.IRepositorioTarefa;
+import br.ufpe.cin.morada.tarefa.RepositorioTarefaImpl;
 import br.ufpe.cin.morada.tarefa.Tarefa;
 
+@Component
 public class ControladorTarefa {
-	private IRepositorioTarefa repositorioTarefa;
+	private IRepositorioTarefa repositorioTarefa = RepositorioTarefaImpl.getInstance();
 
 	public void inserirTarefa(Tarefa tarefa) {
 		repositorioTarefa.salvar(tarefa);
