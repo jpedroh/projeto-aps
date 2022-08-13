@@ -2,6 +2,8 @@ package br.ufpe.cin.morada.tarefa;
 
 import br.ufpe.cin.morada.casa.Casa;
 
+import java.util.List;
+
 public class RepositorioTarefaImpl implements IRepositorioTarefa {
 
 	private static RepositorioTarefaImpl instance;
@@ -12,7 +14,7 @@ public class RepositorioTarefaImpl implements IRepositorioTarefa {
 		return null;
 	}
 
-	public Tarefa[] buscarTodos(Casa casa) {
+	public List<Tarefa> buscarTodos(Casa casa) {
 		return null;
 	}
 

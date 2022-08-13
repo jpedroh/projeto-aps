@@ -10,7 +10,7 @@ public class RepositorioCasaImpl implements IRepositorioCasa {
 		return null;
 	}
 
-	public Casa buscar(string codigo) {
+	public Casa buscar(String codigo) {
 		return null;
 	}
 
