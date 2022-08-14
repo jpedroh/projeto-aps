@@ -15,6 +15,12 @@ public abstract class Tarefa {
 
 	private DateTime dateTime;
 
+	public Tarefa(String nome, Casa casa, DateTime dateTime) {
+		this.nome = nome;
+		this.casa = casa;
+		this.dateTime = dateTime;
+	}
+
 	public abstract void concluir();
 
 	public abstract boolean isConcluido();

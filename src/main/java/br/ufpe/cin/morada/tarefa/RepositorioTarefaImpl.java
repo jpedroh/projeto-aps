@@ -1,5 +1,6 @@
 package br.ufpe.cin.morada.tarefa;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,7 +9,7 @@ import br.ufpe.cin.morada.casa.Casa;
 public class RepositorioTarefaImpl implements IRepositorioTarefa {
 	private long nextId = 1;
 	private static RepositorioTarefaImpl instance;
-	private List<Tarefa> tarefas;
+	private List<Tarefa> tarefas = new ArrayList<>();
 
 	public static RepositorioTarefaImpl getInstance() {
 		if (instance == null) {

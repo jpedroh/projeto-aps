@@ -1,8 +1,5 @@
 package br.ufpe.cin.morada.controladores;
 
-import br.ufpe.cin.morada.tarefa.Tarefa;
-import br.ufpe.cin.morada.util.Email;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 import br.ufpe.cin.morada.casa.Casa;
 import br.ufpe.cin.morada.pessoa.Pessoa;
+import br.ufpe.cin.morada.tarefa.Tarefa;
+import br.ufpe.cin.morada.util.Email;
 
 @Component
 public class Fachada {
@@ -29,7 +28,7 @@ public class Fachada {
 	}
 
 	public void inserirTarefa(Tarefa tarefa) {
-
+		this.controladorTarefa.inserirTarefa(tarefa);
 	}
 
 	public void concluirTarefa(long id) {
@@ -59,5 +58,9 @@ public class Fachada {
 	public void sairCasa(String codigo, Email email) {
 		Pessoa membro = controladorPessoa.buscar(email);
 		controladorCasa.sairCasa(codigo, membro);
+	}
+
+	public Casa buscarCasa(String codigoCasa) {
+		return controladorCasa.buscar(codigoCasa);
 	}
 }
