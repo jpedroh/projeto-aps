@@ -14,13 +14,23 @@
       <tr>
         <th>Nome</th>
         <th>Data e Hora</th>
+        <th>Ação</th>
       </tr>
     </thead>
     <tbody>
       <tr th:each="tarefa: ${tarefas}">
-        <td th:text="${tarefa.getNome()}" />
-        <td th:text="${tarefa.getDateTime()}" />
-        <td th:text="${tarefa.getResponsaveis()}" />
+        <td>
+          <span th:text="${tarefa.getNome()}"></span>
+        </td>
+        <td>
+          <span th:text="${tarefa.getDateTime()}"></span>
+        </td>
+        <td>
+          <form th:if="${!tarefa.isConcluido()}" action="/concluir-tarefa" method="POST">
+            <input th:value="${tarefa.getId()}" name="id" hidden />
+            <button>Concluir</button>
+          </form>
+        </td>
       </tr>
     </tbody>
   </table>
