@@ -1,11 +1,14 @@
 package br.ufpe.cin.morada.pessoa;
 
+import br.ufpe.cin.morada.casa.Casa;
 import br.ufpe.cin.morada.util.Email;
 
 public class Pessoa {
 	private String nome;
 
 	private Email email;
+
+	private Casa casa;
 
 	public Pessoa(String nome, Email email) {
 		this.nome = nome;
@@ -35,5 +38,17 @@ public class Pessoa {
 			return false;
 		Pessoa other = (Pessoa) obj;
 		return other.email.equals(email);
+	}
+
+	public void setCasa(Casa casa) {
+		this.casa = casa;
+	}
+
+	public Casa getCasa() {
+		return casa;
+	}
+
+	public boolean hasCasa() {
+		return casa != null;
 	}
 }

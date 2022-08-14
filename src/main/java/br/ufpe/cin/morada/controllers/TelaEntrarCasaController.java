@@ -20,6 +20,6 @@ public class TelaEntrarCasaController {
 	@PostMapping(value = "/entrar-casa")
 	public String entrarCasa(@CookieValue(value = "email") String email, @RequestParam Map<String, String> params, Model model) {
 		fachada.entrarCasa(params.get("codigo"), Email.from(email));
-		return "casa-criada";
+		return "redirect:/";
 	}
 }

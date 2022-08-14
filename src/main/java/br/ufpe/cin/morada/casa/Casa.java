@@ -28,6 +28,7 @@ public class Casa {
 			throw new RuntimeException(pessoa.getNome() + " já está cadastrada nesta casa.");
 		}
 		membros.add(pessoa);
+		pessoa.setCasa(this);
 	}
 
 	public void removerMembro(Pessoa pessoa) {
@@ -35,6 +36,7 @@ public class Casa {
 			throw new RuntimeException(pessoa.getNome() + " não está cadastrada nesta casa.");
 		}
 		membros.remove(pessoa);
+		pessoa.setCasa(null);
 	}
 
 	public String getCodigo() {
