@@ -40,6 +40,7 @@ public class Fachada {
 	}
 
 	public List<Tarefa> buscarTarefas(String codigoCasa) {
+		System.out.println(codigoCasa);
 		Casa casa = controladorCasa.buscar(codigoCasa);
 		return controladorTarefa.buscarTarefas(casa);
 	}

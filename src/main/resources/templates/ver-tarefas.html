@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morada - Ver Tarefas</title>
+</head>
+
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Data e Hora</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="tarefa: ${tarefas}">
+        <td th:text="${tarefa.getNome()}" />
+        <td th:text="${tarefa.getDateTime()}" />
+        <td th:text="${tarefa.getResponsaveis()}" />
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>

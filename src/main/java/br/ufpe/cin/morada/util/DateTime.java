@@ -16,4 +16,9 @@ public class DateTime {
   public String getHora() {
     return hora;
   }
+
+  @Override
+  public String toString() {
+    return data + "-" + hora;
+  }
 }
