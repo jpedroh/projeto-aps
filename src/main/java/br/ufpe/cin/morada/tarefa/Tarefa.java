@@ -21,6 +21,10 @@ public abstract class Tarefa {
 
 	public abstract Set<Pessoa> getResponsaveis();
 
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public long getId() {
 		return id;
 	}
