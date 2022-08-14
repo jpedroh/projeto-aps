@@ -31,4 +31,8 @@ public class ControladorTarefa {
 	public List<Tarefa> buscarTarefas(Casa casa) {
 		return repositorioTarefa.buscarTodos(casa);
 	}
+
+	public void agruparTarefas(long parent, long child) {
+		// TODO
+	}
 }

@@ -22,7 +22,10 @@ public class ControladorPessoa {
 	}
 
 	public Pessoa buscar(Email email) {
-		return repositorioPessoa.getByEmail(email)
-				.orElseThrow(() -> new IllegalArgumentException("Não foi possível encontrar uma pessoa com o email " + email));
+		Pessoa pessoa = repositorioPessoa.getByEmail(email);
+		if (pessoa == null) {
+			throw new IllegalArgumentException("Não foi possível encontrar uma pessoa com o email " + email);
+		}
+		return pessoa;
 	}
 }

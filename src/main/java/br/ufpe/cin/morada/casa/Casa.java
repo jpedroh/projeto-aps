@@ -8,9 +8,7 @@ import br.ufpe.cin.morada.pessoa.Pessoa;
 
 public class Casa {
 	private String codigo;
-
 	private String nome;
-
 	private List<Pessoa> membros;
 
 	public Casa(String nome) {

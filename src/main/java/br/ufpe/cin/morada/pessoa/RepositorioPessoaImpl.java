@@ -2,7 +2,6 @@ package br.ufpe.cin.morada.pessoa;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 import br.ufpe.cin.morada.util.Email;
 
@@ -21,8 +20,8 @@ public class RepositorioPessoaImpl implements IRepositorioPessoa {
 		return this.pessoas.get(email) != null;
 	}
 
-	public Optional<Pessoa> getByEmail(Email email) {
-		return Optional.ofNullable(this.pessoas.get(email));
+	public Pessoa getByEmail(Email email) {
+		return this.pessoas.get(email);
 	}
 
 	public void salvar(Pessoa pessoa) {

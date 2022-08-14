@@ -44,6 +44,10 @@ public class Fachada {
 		return controladorTarefa.buscarTarefas(casa);
 	}
 
+	public void agruparTarefas(long parent, long child) {
+		controladorTarefa.agruparTarefas(parent, child);
+	}
+
 	public Casa criarCasa(Casa casa, Email email) {
 		Pessoa membro = controladorPessoa.buscar(email);
 		controladorCasa.criarCasa(casa, membro);
