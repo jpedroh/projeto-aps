@@ -4,10 +4,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import br.ufpe.cin.morada.casa.Casa;
 import br.ufpe.cin.morada.pessoa.Pessoa;
+import br.ufpe.cin.morada.util.DateTime;
 
 public class TarefaComplexa extends Tarefa {
   List<Tarefa> subTarefas;
+
+  public TarefaComplexa(String nome, Casa casa, DateTime dateTime) {
+    super(nome, casa, dateTime);
+  }
 
   @Override
   public void concluir() {
