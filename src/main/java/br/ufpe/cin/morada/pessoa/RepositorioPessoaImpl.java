@@ -1,13 +1,23 @@
 package br.ufpe.cin.morada.pessoa;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import br.ufpe.cin.morada.util.Email;
 
+@Component
 public class RepositorioPessoaImpl implements IRepositorioPessoa {
 	private static RepositorioPessoaImpl instance;
-	private final Map<Email, Pessoa> pessoas = new HashMap<>();
+
+	@Autowired
+	private PessoaDAO pessoaDAO;
+
+	private RepositorioPessoaImpl() {
+	}
+
+	public RepositorioPessoaImpl(PessoaDAO pessoaDAO) {
+		this.pessoaDAO = pessoaDAO;
+	}
 
 	public static RepositorioPessoaImpl getInstance() {
 		if (instance == null) {
@@ -17,14 +27,14 @@ public class RepositorioPessoaImpl implements IRepositorioPessoa {
 	}
 
 	public boolean existe(Email email) {
-		return this.pessoas.get(email) != null;
+		return pessoaDAO.existsById(email);
 	}
 
 	public Pessoa getByEmail(Email email) {
-		return this.pessoas.get(email);
+		return pessoaDAO.findById(email).get();
 	}
 
 	public void salvar(Pessoa pessoa) {
-		this.pessoas.put(pessoa.getEmail(), pessoa);
+		pessoaDAO.save(pessoa);
 	}
 }

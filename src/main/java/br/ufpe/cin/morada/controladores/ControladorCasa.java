@@ -1,5 +1,6 @@
 package br.ufpe.cin.morada.controladores;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.ufpe.cin.morada.casa.Casa;
@@ -9,7 +10,8 @@ import br.ufpe.cin.morada.pessoa.Pessoa;
 
 @Component
 public class ControladorCasa {
-	private IRepositorioCasa repositorioCasa = RepositorioCasaImpl.getInstance();
+	@Autowired
+	private IRepositorioCasa repositorioCasa;
 
 	public void criarCasa(Casa casa, Pessoa pessoa) {
 		casa.adicionarMembro(pessoa);

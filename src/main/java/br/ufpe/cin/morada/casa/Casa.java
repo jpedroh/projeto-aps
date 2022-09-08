@@ -4,12 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import br.ufpe.cin.morada.pessoa.Pessoa;
 
+@Entity
+@Table(name = "casas")
 public class Casa {
+	@Id
 	private String codigo;
 	private String nome;
+
+	@OneToMany(mappedBy = "casa", cascade = CascadeType.ALL)
 	private List<Pessoa> membros;
+
+	private Casa() {
+
+	}
 
 	public Casa(String nome) {
 		this.codigo = gerarCodigo();

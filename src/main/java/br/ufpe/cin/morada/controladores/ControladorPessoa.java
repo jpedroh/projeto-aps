@@ -11,7 +11,8 @@ import br.ufpe.cin.morada.util.Email;
 
 @Component
 public class ControladorPessoa {
-	private IRepositorioPessoa repositorioPessoa = RepositorioPessoaImpl.getInstance();
+	@Autowired
+	private IRepositorioPessoa repositorioPessoa;
 	@Autowired
 	private ISubsistemaGoogle subsistemaGoogle;
 

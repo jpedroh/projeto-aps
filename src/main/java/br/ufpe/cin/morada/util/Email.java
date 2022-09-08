@@ -1,7 +1,17 @@
 package br.ufpe.cin.morada.util;
 
-public final class Email {
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
+public final class Email implements Serializable {
+  @Column(name = "email")
   private String valor;
+
+  private Email() {
+  }
 
   private Email(String valor) {
     this.valor = valor;
