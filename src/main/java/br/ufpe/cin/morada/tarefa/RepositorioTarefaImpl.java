@@ -2,14 +2,21 @@ package br.ufpe.cin.morada.tarefa;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Component;
 
 import br.ufpe.cin.morada.casa.Casa;
 
+@Component
 public class RepositorioTarefaImpl implements IRepositorioTarefa {
-	private long nextId = 1;
 	private static RepositorioTarefaImpl instance;
-	private List<Tarefa> tarefas = new ArrayList<>();
+
+	@Autowired
+	private TarefaDAO tarefasDAO;
 
 	public static RepositorioTarefaImpl getInstance() {
 		if (instance == null) {
@@ -19,25 +26,18 @@ public class RepositorioTarefaImpl implements IRepositorioTarefa {
 	}
 
 	public List<Tarefa> buscarTodos(Casa casa) {
-		return this.tarefas.stream().filter(t -> t.getCasa().equals(casa)).collect(Collectors.toList());
+		return this.tarefasDAO.findAllByCasa(casa);
 	}
 
 	public void salvar(Tarefa tarefa) {
-		tarefa.setId(nextId);
-		nextId++;
-		this.tarefas.add(tarefa);
+		tarefasDAO.save(tarefa);
 	}
 
 	public Tarefa buscar(long id) {
-		for (Tarefa tarefa : tarefas) {
-			if (tarefa.getId() == id) {
-				return tarefa;
-			}
-		}
-		return null;
+		return tarefasDAO.findById(id).get();
 	}
 
 	public void excluir(Tarefa tarefa) {
-		tarefas.remove(tarefa);
+		tarefasDAO.delete(tarefa);
 	}
 }

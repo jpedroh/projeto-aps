@@ -9,9 +9,9 @@ CREATE TABLE IF NOT EXISTS pessoas (
   codigo_casa VARCHAR(7) NOT NULL,
   CONSTRAINT fk_casa FOREIGN KEY (codigo_casa) REFERENCES casas(codigo) ON DELETE CASCADE ON UPDATE CASCADE
 );
-
+  
 CREATE TABLE IF NOT EXISTS tarefas (
-    id bigint PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     nome varchar(255) NOT NULL ,
     codigo_casa VARCHAR(7) NOT NULL,
     date_time TIMESTAMP NOT NULL,
