@@ -1,11 +1,14 @@
 package br.ufpe.cin.morada.casa;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RepositorioCasaImpl implements IRepositorioCasa {
 	private static RepositorioCasaImpl instance;
-	private Map<String, Casa> casas = new HashMap<>();
+
+	@Autowired
+	private CasaDAO casaDAO;
 
 	public static RepositorioCasaImpl getInstance() {
 		if (instance == null) {
@@ -15,10 +18,10 @@ public class RepositorioCasaImpl implements IRepositorioCasa {
 	}
 
 	public Casa buscar(String codigo) {
-		return this.casas.get(codigo);
+		return this.casaDAO.findById(codigo).get();
 	}
 
 	public void salvar(Casa casa) {
-		this.casas.put(casa.getCodigo(), casa);
+		this.casaDAO.save(casa);
 	}
 }

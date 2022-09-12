@@ -1,14 +1,32 @@
 package br.ufpe.cin.morada.pessoa;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import br.ufpe.cin.morada.casa.Casa;
 import br.ufpe.cin.morada.util.Email;
 
+@Entity
+@Table(name = "pessoas")
 public class Pessoa {
-	private String nome;
-
+	@Id
+	@Embedded
 	private Email email;
 
+	@Column(name = "nome")
+	private String nome;
+
+	@OneToOne
+	@JoinColumn(name = "codigo_casa", nullable = true)
 	private Casa casa;
+
+	private Pessoa() {
+	}
 
 	public Pessoa(String nome, Email email) {
 		this.nome = nome;

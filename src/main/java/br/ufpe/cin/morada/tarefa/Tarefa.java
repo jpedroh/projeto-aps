@@ -1,21 +1,43 @@
 package br.ufpe.cin.morada.tarefa;
 
+import java.time.LocalDateTime;
 import java.util.Set;
+
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import br.ufpe.cin.morada.casa.Casa;
 import br.ufpe.cin.morada.pessoa.Pessoa;
-import br.ufpe.cin.morada.util.DateTime;
 
+@Entity
+@Table(name = "tarefas")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "parent_id", discriminatorType = DiscriminatorType.INTEGER)
 public abstract class Tarefa {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	private String nome;
 
+	@OneToOne
 	private Casa casa;
 
-	private DateTime dateTime;
+	private LocalDateTime dateTime;
 
-	public Tarefa(String nome, Casa casa, DateTime dateTime) {
+	protected Tarefa() {
+
+	}
+
+	public Tarefa(String nome, Casa casa, LocalDateTime dateTime) {
 		this.nome = nome;
 		this.casa = casa;
 		this.dateTime = dateTime;
@@ -43,7 +65,7 @@ public abstract class Tarefa {
 		return casa;
 	}
 
-	public DateTime getDateTime() {
+	public LocalDateTime getDateTime() {
 		return dateTime;
 	}
 

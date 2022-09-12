@@ -1,8 +1,12 @@
 package br.ufpe.cin.morada.controllers;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -43,7 +47,8 @@ public class TelaCriarTarefaController {
 
     Pessoa responsavel = fachada.buscarPessoa(Email.from(params.get("responsavel")));
     Casa casa = fachada.buscarCasa(params.get("casa"));
-    DateTime dataHora = new DateTime(params.get("data"), params.get("hora"));
+    LocalDateTime dataHora = LocalDateTime.from(DateTimeFormatter.ISO_LOCAL_DATE_TIME
+        .parse(params.get("data") + "T" + params.get("hora") + ":00"));
     Tarefa tarefa = new TarefaSimples(params.get("nome"), casa, dataHora, responsavel);
 
     fachada.inserirTarefa(tarefa);
