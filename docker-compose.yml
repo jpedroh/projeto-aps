@@ -1,15 +1,60 @@
 version: '3.1'
 
 services:
-  db:
+  auth:
+    build:
+      context: auth/
+    ports:
+      - 5000:5000
+    depends_on:
+      - db-auth
+  casa:
+    build:
+      context: casa/
+    ports:
+      - 5000:5000
+    depends_on:
+      - db-casa
+  tarefa:
+    build:
+      context: tarefa/
+    ports:
+      - 5000:5000
+    depends_on:
+      - db-tarefa
+  db-auth:
     image: postgres:14.5
     restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: morada
+      POSTGRES_DB: auth
     volumes:
       - /var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./auth/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
+  db-casa:
+    image: postgres:14.5
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: casa
+    volumes:
+      - /var/lib/postgresql/data
+      - ./casa/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
+  db-tarefa:
+    image: postgres:14.5
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: tarefa
+    volumes:
+      - /var/lib/postgresql/data
+      - ./tarefa/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - 5432:5432
