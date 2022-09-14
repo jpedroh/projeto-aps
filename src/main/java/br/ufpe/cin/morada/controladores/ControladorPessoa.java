@@ -18,6 +18,12 @@ public class ControladorPessoa {
 
 	public Pessoa logar(String token) {
 		Pessoa pessoa = subsistemaGoogle.getDadosFromToken(token);
+		Pessoa pessoaDb = repositorioPessoa.getByEmail(pessoa.getEmail());
+
+		if (pessoaDb != null) {
+			pessoa.setCasa(pessoaDb.getCasa());
+		}
+
 		repositorioPessoa.salvar(pessoa);
 		return pessoa;
 	}
