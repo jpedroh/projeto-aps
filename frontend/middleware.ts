@@ -1,14 +1,18 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
+const PROTECTED_PATHS = [
+  '/'
+]
+
 export function middleware(request: NextRequest) {
   const hasToken = request.cookies.has('email');
 
-  if (request.nextUrl.pathname === 'login') {
+  if (request.nextUrl.toString().includes('login')) {
     return NextResponse.next();
   }
 
-  if (!hasToken) {
+  if (PROTECTED_PATHS.includes(request.nextUrl.pathname) && !hasToken) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 

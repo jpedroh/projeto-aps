@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,15 +17,14 @@ import br.ufpe.cin.morada.auth.entidades.Pessoa;
 import br.ufpe.cin.morada.auth.util.Email;
 
 @RestController
+@CrossOrigin(allowCredentials = "true", originPatterns = "http://localhost:5000")
 public class AuthRestController {
   @Autowired
   ControladorPessoa controladorPessoa;
 
   @PostMapping("/login")
   public Pessoa login(@RequestParam(name = "id_token") String token, HttpServletResponse response) {
-    Pessoa pessoa = controladorPessoa.logar(token);
-    response.addCookie(new Cookie("email", pessoa.getEmail().getValor()));
-    return pessoa;
+    return controladorPessoa.logar(token);
   }
 
   @GetMapping("/users/me")
