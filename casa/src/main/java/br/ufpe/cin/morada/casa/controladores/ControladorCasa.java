@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import br.ufpe.cin.morada.casa.dados.IRepositorioCasa;
 import br.ufpe.cin.morada.casa.entidades.Casa;
 import br.ufpe.cin.morada.casa.entidades.Pessoa;
+import br.ufpe.cin.morada.casa.subsistemaPessoa.ISubsistemaPessoa;
 import br.ufpe.cin.morada.casa.util.Email;
 
 @Component
@@ -13,18 +14,27 @@ public class ControladorCasa {
   @Autowired
   private IRepositorioCasa repositorioCasa;
 
-  public void criarCasa(Casa casa, Pessoa pessoa) {
+  @Autowired
+  private ISubsistemaPessoa subsistemaPessoa;
+
+  public void criarCasa(Casa casa, Email email) {
+    Pessoa pessoa = subsistemaPessoa.getPessoaByEmail(email)
+        .orElseThrow(() -> new IllegalArgumentException("Pessoa não encontrada."));
     casa.adicionarMembro(pessoa);
     repositorioCasa.salvar(casa);
   }
 
-  public void entrarCasa(String codigo, Pessoa pessoa) {
+  public void entrarCasa(String codigo, Email email) {
+    Pessoa pessoa = subsistemaPessoa.getPessoaByEmail(email)
+        .orElseThrow(() -> new IllegalArgumentException("Pessoa não encontrada."));
     Casa casa = repositorioCasa.buscar(codigo).orElseThrow(() -> new CasaNaoEncontradaException(codigo));
     casa.adicionarMembro(pessoa);
     repositorioCasa.salvar(casa);
   }
 
-  public void sairCasa(String codigo, Pessoa pessoa) {
+  public void sairCasa(String codigo, Email email) {
+    Pessoa pessoa = subsistemaPessoa.getPessoaByEmail(email)
+        .orElseThrow(() -> new IllegalArgumentException("Pessoa não encontrada."));
     Casa casa = repositorioCasa.buscar(codigo).orElseThrow(() -> new CasaNaoEncontradaException(codigo));
     casa.removerMembro(pessoa);
     repositorioCasa.salvar(casa);

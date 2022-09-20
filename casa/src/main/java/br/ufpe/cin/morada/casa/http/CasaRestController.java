@@ -23,18 +23,18 @@ public class CasaRestController {
   @PostMapping("/casas")
   public Casa criarCasa(@RequestParam String nome, @CookieValue(name = "email", required = true) Email email) {
     Casa casa = new Casa(nome);
-    controladorCasa.criarCasa(casa, Pessoa.withEmail(email));
+    controladorCasa.criarCasa(casa, email);
     return casa;
   }
 
   @PostMapping("/casas/{codigo}/entrar")
   public void entrarCasa(@PathVariable String codigo, @CookieValue(name = "email", required = true) Email email) {
-    controladorCasa.entrarCasa(codigo, Pessoa.withEmail(email));
+    controladorCasa.entrarCasa(codigo, email);
   }
 
   @PostMapping("/casas/{codigo}/sair")
   public void sairCasa(@PathVariable String codigo, @CookieValue(name = "email", required = true) Email email) {
-    controladorCasa.sairCasa(codigo, Pessoa.withEmail(email));
+    controladorCasa.sairCasa(codigo, email);
   }
 
   @GetMapping("/casas/{codigo}")
