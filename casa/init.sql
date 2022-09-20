@@ -3,8 +3,8 @@ CREATE TABLE IF NOT EXISTS casas (
     nome VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS casas_pessoas (
-  codigo_casa VARCHAR(7) NOT NULL,
-  email_pessoa VARCHAR(63) NOT NULL,
-  CONSTRAINT casas_pessoas_pk PRIMARY KEY (codigo_casa, email_pessoa)
+CREATE TABLE IF NOT EXISTS pessoas (
+  email VARCHAR(63) PRIMARY KEY,
+  codigo_casa VARCHAR(7) NULL,
+  CONSTRAINT fk_casas FOREIGN KEY(codigo_casa) REFERENCES casas(codigo) ON DELETE CASCADE ON UPDATE CASCADE
 );
