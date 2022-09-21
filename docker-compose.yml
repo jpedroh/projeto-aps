@@ -4,8 +4,6 @@ services:
   auth:
     build:
       context: auth/
-    ports:
-      - 3001:3000
     depends_on:
       - db-auth
   db-auth:
@@ -21,8 +19,6 @@ services:
   casa:
     build:
       context: casa/
-    ports:
-      - 3000:3000
     depends_on:
       - db-casa
   db-casa:
@@ -35,3 +31,11 @@ services:
     volumes:
       - /var/lib/postgresql/data
       - ./casa/init.sql:/docker-entrypoint-initdb.d/init.sql
+  gateway:
+    build:
+      context: gateway/
+    ports:
+      - 5001:80
+    depends_on:
+      - casa
+      - auth

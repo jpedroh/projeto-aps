@@ -6,7 +6,7 @@ export function useEntrarCasa() {
 
   return useMutation({
     mutationFn: (data: { codigo: string }) => {
-      return axios.post(`http://localhost:3000/casas/${data.codigo}/entrar`, {}, { withCredentials: true }).then(r => r.data)
+      return axios.post(`http://localhost:5001/casas/${data.codigo}/entrar`, {}, { withCredentials: true }).then(r => r.data)
     },
     onSuccess: () => queryClient.invalidateQueries(['users', 'me', 'home'])
   })
