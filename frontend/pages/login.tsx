@@ -19,7 +19,7 @@ const Login: NextPage = () => {
 
     </div>
     <Script src="https://apis.google.com/js/platform.js" async defer />
-    <Script>
+    <Script id="onSignIn">
       {`function onSignIn(googleUser) {
       var profile = googleUser.getBasicProfile();
       document.getElementById('id_token').setAttribute('value', googleUser.getAuthResponse().id_token)

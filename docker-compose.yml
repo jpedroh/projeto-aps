@@ -39,3 +39,11 @@ services:
     depends_on:
       - casa
       - auth
+
+  frontend:
+    build:
+      context: frontend/
+    ports:
+      - 5000:3000
+    depends_on:
+      - gateway
