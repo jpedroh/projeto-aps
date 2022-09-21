@@ -15,13 +15,6 @@ services:
       - 5000:5000
     depends_on:
       - db-casa
-  tarefa:
-    build:
-      context: tarefa/
-    ports:
-      - 5000:5000
-    depends_on:
-      - db-tarefa
   db-auth:
     image: postgres:14.5
     restart: always
@@ -44,17 +37,5 @@ services:
     volumes:
       - /var/lib/postgresql/data
       - ./casa/init.sql:/docker-entrypoint-initdb.d/init.sql
-    ports:
-      - 5432:5432
-  db-tarefa:
-    image: postgres:14.5
-    restart: always
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: tarefa
-    volumes:
-      - /var/lib/postgresql/data
-      - ./tarefa/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - 5432:5432
