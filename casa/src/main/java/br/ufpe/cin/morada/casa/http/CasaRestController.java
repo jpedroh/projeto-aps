@@ -1,12 +1,14 @@
 package br.ufpe.cin.morada.casa.http;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.ufpe.cin.morada.casa.controladores.ControladorCasa;
@@ -21,8 +23,9 @@ public class CasaRestController {
   private ControladorCasa controladorCasa;
 
   @PostMapping("/casas")
-  public Casa criarCasa(@RequestParam String nome, @CookieValue(name = "email", required = true) Email email) {
-    Casa casa = new Casa(nome);
+  public Casa criarCasa(@RequestBody Map<String, String> payload,
+      @CookieValue(name = "email", required = true) Email email) {
+    Casa casa = new Casa(payload.get("nome"));
     controladorCasa.criarCasa(casa, email);
     return casa;
   }

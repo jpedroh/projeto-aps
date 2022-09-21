@@ -1,31 +1,29 @@
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
+import { ComCasa } from '../components/com-casa';
+import { SemCasa } from '../components/sem-casa';
+import { useUser } from '../hooks/useUser';
+import { useUserHome } from '../hooks/useUserHome';
 import styles from '../styles/Home.module.css';
 import { Centered } from '../utils/Centered';
 
 const Home: NextPage = () => {
-  const user = useQuery(['users', 'me'], () => {
-    return axios.get('http://localhost:3000/users/me', {
-      withCredentials: true
-    }).then(r => r.data)
-  })
+  const user = useUser();
+  const userHome = useUserHome();
 
-  if (user.isLoading) {
+  if (user.isLoading || userHome.isLoading) {
     return <Centered>Carregando...</Centered>
   }
 
-  if (user.isError) {
+  if (user.isError || userHome.isError) {
     return <Centered>Um erro ocorreu 🙁</Centered>
   }
 
   return (
-    <Centered className={styles.container}>
-      <h1 className={styles.title}>
+    <Centered className={`${styles.container} gap-4 w-10/12 mx-auto`}>
+      <h1 className={'text-4xl font-semibold'}>
         Olá, {user.data.nome}! 👋
       </h1>
+      {userHome.data ? <ComCasa /> : <SemCasa />}
     </Centered>
   )
 }

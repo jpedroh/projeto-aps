@@ -9,6 +9,6 @@ import br.ufpe.cin.morada.casa.entidades.Casa;
 import br.ufpe.cin.morada.casa.util.Email;
 
 public interface CasaDAO extends CrudRepository<Casa, String> {
-  @Query("SELECT c, p FROM Casa c, Pessoa p WHERE p.email = ?1")
+  @Query("SELECT distinct c from Casa c JOIN FETCH c.membros m where m.email = ?1")
   Optional<Casa> findByEmail(Email email);
 }
