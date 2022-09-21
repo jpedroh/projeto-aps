@@ -1,15 +1,49 @@
-version: '3.1'
+version: '3.8'
 
 services:
-  db:
+  auth:
+    build:
+      context: auth/
+    depends_on:
+      - db-auth
+  db-auth:
     image: postgres:14.5
     restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: morada
+      POSTGRES_DB: auth
     volumes:
       - /var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./auth/init.sql:/docker-entrypoint-initdb.d/init.sql
+  casa:
+    build:
+      context: casa/
+    depends_on:
+      - db-casa
+  db-casa:
+    image: postgres:14.5
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: casa
+    volumes:
+      - /var/lib/postgresql/data
+      - ./casa/init.sql:/docker-entrypoint-initdb.d/init.sql
+  gateway:
+    build:
+      context: gateway/
     ports:
-      - 5432:5432
+      - 5001:80
+    depends_on:
+      - casa
+      - auth
+
+  frontend:
+    build:
+      context: frontend/
+    ports:
+      - 5000:3000
+    depends_on:
+      - gateway
