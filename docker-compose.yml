@@ -1,20 +1,13 @@
-version: '3.1'
+version: '3.8'
 
 services:
   auth:
     build:
       context: auth/
     ports:
-      - 5000:5000
+      - 3001:3000
     depends_on:
       - db-auth
-  casa:
-    build:
-      context: casa/
-    ports:
-      - 5000:5000
-    depends_on:
-      - db-casa
   db-auth:
     image: postgres:14.5
     restart: always
@@ -25,8 +18,13 @@ services:
     volumes:
       - /var/lib/postgresql/data
       - ./auth/init.sql:/docker-entrypoint-initdb.d/init.sql
+  casa:
+    build:
+      context: casa/
     ports:
-      - 5433:5432
+      - 3000:3000
+    depends_on:
+      - db-casa
   db-casa:
     image: postgres:14.5
     restart: always
@@ -37,5 +35,3 @@ services:
     volumes:
       - /var/lib/postgresql/data
       - ./casa/init.sql:/docker-entrypoint-initdb.d/init.sql
-    ports:
-      - 5432:5432
